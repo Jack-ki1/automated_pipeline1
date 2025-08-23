@@ -14,7 +14,7 @@ import plotly.express as px
 # STREAMLIT SETUP
 # -------------------------------
 st.set_page_config(page_title="Universal Data Pipeline", layout="wide")
-st.title("🔄 Universal Data Pipeline for Analysts")
+st.title("📊📉FINESE CROSS INDUSTRY ANALYSIS SYSTEM📉")
 st.markdown("""
 <style>
 .info-card {
@@ -105,7 +105,13 @@ if not df.empty:
     """, unsafe_allow_html=True)
 
     st.subheader("📑 Column Preview")
-    st.dataframe(df.head())
+    st.dataframe(df.head(3))
+    st.subheader("📑 data Preview")
+    st.dataframe(df.info(verbose=True))
+    st.subheader("📑 numerical data summary")
+    st.dataframe(df.describe())
+    st.subheader("📑 count of unique values per column")
+    st.dataframe(df.nunique())
 
 # -------------------------------
 # STEP 3: Clean Data
@@ -136,59 +142,45 @@ if not df.empty:
 # -------------------------------
 # STEP 4: Visualize Data
 # -------------------------------
-    st.header("📊 Step 4: Visualize Your Data")
+   # Step 4: Visualization Setup
+    st.markdown("### 📊 Data Visualization")
 
-    numeric_cols = df.select_dtypes(include=['float64', 'int64']).columns.tolist()
-    categorical_cols = df.select_dtypes(include=['object', 'category']).columns.tolist()
+    num_charts = st.number_input("How many plots would you like to generate?", min_value=1, step=1)
+    chart_configs = []
 
-    if "plot_count" not in st.session_state:
-        st.session_state.plot_count = 0
+    chart_types = ["Bar", "Line", "Scatter", "Histogram", "Box"]
 
-    if "plotting_done" not in st.session_state:
-        st.session_state.plotting_done = False
+    for i in range(int(num_charts)):
+        st.markdown(f"**Chart {i+1} Configuration**")
+        chart_type = st.selectbox(f"Select chart type for Chart {i+1}", chart_types, key=f"type_{i}")
+        x_axis = st.selectbox(f"Select x-axis for Chart {i+1}", ["None"] + list(df.columns), key=f"x_{i}")
+        y_axis = st.selectbox(f"Select y-axis for Chart {i+1}", ["None"] + list(df.columns), key=f"y_{i}")
+        color_axis = st.selectbox(f"Optional: Select column for color (Chart {i+1})", ["None"] + list(df.columns), key=f"color_{i}")
+        chart_configs.append({"type": chart_type, "x": x_axis, "y": y_axis, "color": color_axis})
 
-    if st.button("➕ Add Another Plot"):
-        st.session_state.plot_count += 1
+    st.markdown("---")
+    st.markdown("### 📈 Your Charts")
 
-    if st.button("✅ Done Plotting"):
-        st.session_state.plotting_done = True
-
-    if not st.session_state.plotting_done:
-        for i in range(st.session_state.plot_count):
-            plot_type = st.selectbox("Choose plot type:", [
-                "Histogram", "Box Plot", "Bar Chart (Categorical)", "Scatter Plot", "Line Plot"], key=f"type_{i}")
-
-            if plot_type == "Histogram":
-                x_col = st.selectbox("Select numeric column (X):", numeric_cols, key=f"hist_{i}")
-                fig = px.histogram(df, x=x_col, title=f"Histogram of {x_col}")
-                st.plotly_chart(fig, use_container_width=True)
-
-            elif plot_type == "Box Plot":
-                y_col = st.selectbox("Select numeric column (Y):", numeric_cols, key=f"box_{i}")
-                fig = px.box(df, y=y_col, title=f"Box Plot of {y_col}")
-                st.plotly_chart(fig, use_container_width=True)
-
-            elif plot_type == "Bar Chart (Categorical)":
-                cat_col = st.selectbox("Select categorical column:", categorical_cols, key=f"bar_{i}")
-                top_n = st.slider("Top N categories to display:", 5, 30, 10, key=f"topn_{i}")
-                counts = df[cat_col].value_counts().head(top_n).reset_index()
-                counts.columns = [cat_col, "count"]
-                fig = px.bar(counts, x=cat_col, y="count", title=f"Top {top_n} categories in {cat_col}")
-                st.plotly_chart(fig, use_container_width=True)
-
-            elif plot_type == "Scatter Plot":
-                x_col = st.selectbox("Select X-axis (numeric):", numeric_cols, key=f"x_scatter_{i}")
-                y_col = st.selectbox("Select Y-axis (numeric):", numeric_cols, key=f"y_scatter_{i}")
-                color_col = st.selectbox("Optional: Color by (categorical):", ["None"] + categorical_cols, key=f"color_{i}")
-                if color_col != "None":
-                    fig = px.scatter(df, x=x_col, y=y_col, color=df[color_col], title=f"{y_col} vs {x_col} by {color_col}")
-                else:
-                    fig = px.scatter(df, x=x_col, y=y_col, title=f"{y_col} vs {x_col}")
-                st.plotly_chart(fig, use_container_width=True)
-
-            elif plot_type == "Line Plot":
-                x_col = st.selectbox("Select X-axis:", df.columns, key=f"x_line_{i}")
-                y_col = st.selectbox("Select Y-axis (numeric):", numeric_cols, key=f"y_line_{i}")
-                fig = px.line(df.sort_values(by=x_col), x=x_col, y=y_col, title=f"{y_col} over {x_col}")
-                st.plotly_chart(fig, use_container_width=True)
-
+    # Display charts 2 per row
+    for i in range(0, len(chart_configs), 2):
+        cols = st.columns(2)
+        for j in range(2):
+            if i + j < len(chart_configs):
+                config = chart_configs[i + j]
+                with cols[j]:
+                    if config['x'] != "None" and config['y'] != "None":
+                        if config['type'] == "Bar":
+                            fig = px.bar(df, x=config['x'], y=config['y'], color=None if config['color'] == "None" else config['color'])
+                        elif config['type'] == "Line":
+                            fig = px.line(df, x=config['x'], y=config['y'], color=None if config['color'] == "None" else config['color'])
+                        elif config['type'] == "Scatter":
+                            fig = px.scatter(df, x=config['x'], y=config['y'], color=None if config['color'] == "None" else config['color'])
+                        elif config['type'] == "Histogram":
+                            fig = px.histogram(df, x=config['x'], y=config['y'], color=None if config['color'] == "None" else config['color'])
+                        elif config['type'] == "Box":
+                            fig = px.box(df, x=config['x'], y=config['y'], color=None if config['color'] == "None" else config['color'])
+                        st.plotly_chart(fig, use_container_width=True)
+                    else:
+                        st.warning(f"Chart {i+j+1} skipped: x or y axis not specified.")
+else:
+    st.warning("Please load your data to proceed.")

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ALEXIS Banking Dashboard</title>
+    <!-- Box Icons CSS -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="burger.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="sidebar-logo">
+        <i class="bx bx-network-chart"></i>
+      </div>
+      <div class="sidebar-menu">
+        <div
+          class="sidebar-item active"
+          tabindex="0"
+          role="button"
+          aria-label="Dashboard"
+        >
+          <i class="bx bx-grid-alt"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Calendar"
+        >
+          <i class="bx bx-calendar"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Wallet"
+        >
+          <i class="bx bx-wallet"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Analytics"
+        >
+          <i class="bx bx-bar-chart-alt-2"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Profile"
+        >
+          <i class="bx bx-user"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Notifications"
+        >
+          <i class="bx bx-bell"></i>
+        </div>
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Settings"
+        >
+          <i class="bx bx-cog"></i>
+        </div>
+      </div>
+      <div class="sidebar-menu" style="margin-top: auto">
+        <div
+          class="sidebar-item"
+          tabindex="0"
+          role="button"
+          aria-label="Logout"
+        >
+          <i class="bx bx-log-out"></i>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+      <!-- Header -->
+      <div class="header">
+        <div class="greeting">
+          <div class="avatar">
+            <img
+              src="https://randomuser.me/api/portraits/men/44.jpg"
+              alt="Profile"
+            />
+          </div>
+          <div class="greeting-text">
+            <h2>Greetings! <i class="bx bxs-hand"></i></h2>
+            <p>Start your day with ALEXIS</p>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="search-bar">
+            <input
+              type="text"
+              placeholder="Search transactions, cards, etc."
+              aria-label="Search"
+            />
+            <i class="bx bx-search"></i>
+          </div>
+          <div class="account-button" role="button" tabindex="0">
+            <i class="bx bx-user-circle"></i>
+            <span>My account</span>
+            <i class="bx bx-chevron-down"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="content-area">
+        <!-- Left Panel -->
+        <div class="left-panel">
+          <!-- Cards Section -->
+          <div class="cards-section">
+            <div class="section-header">
+              <h3 class="section-title">Cards</h3>
+              <span class="see-all" tabindex="0" role="button">See all</span>
+            </div>
+            <div class="cards-container">
+              <!-- Card 1 -->
+              <div
+                class="card card-dark"
+                tabindex="0"
+                role="button"
+                aria-label="View card details"
+              >
+                <div class="card-dots">
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </div>
+                <div class="card-amount">$ 21,540.8</div>
+                <div class="card-number">
+                  **** 2475 <i class="bx bx-low-vision"></i>
+                </div>
+                <div class="card-expiry">10/25</div>
+                <div class="card-logo">
+                  <i class="bx bxl-visa"></i>
+                </div>
+              </div>
+              <!-- Card 2 -->
+              <div
+                class="card card-light"
+                tabindex="0"
+                role="button"
+                aria-label="View card details"
+              >
+                <div class="card-dots">
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </div>
+                <div class="card-amount">₹ 185,632.0</div>
+                <div class="card-number">
+                  **** 3854 <i class="bx bx-low-vision"></i>
+                </div>
+                <div class="card-expiry">10/25</div>
+                <div class="card-logo">
+                  <i class="bx bxs-circle"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Quick Actions -->
+          <div class="quick-actions">
+            <div
+              class="action-button primary"
+              tabindex="0"
+              role="button"
+              aria-label="Transfer money"
+            >
+              <div class="action-icon">
+                <i class="bx bx-transfer"></i>
+              </div>
+              <span class="action-text">Transfer</span>
+            </div>
+            <div
+              class="action-button"
+              tabindex="0"
+              role="button"
+              aria-label="Pay utilities"
+            >
+              <div class="action-icon">
+                <i class="bx bx-bulb"></i>
+              </div>
+              <span class="action-text">Utility</span>
+            </div>
+            <div
+              class="action-button"
+              tabindex="0"
+              role="button"
+              aria-label="Pay taxes"
+            >
+              <div class="action-icon">
+                <i class="bx bx-dollar-circle"></i>
+              </div>
+              <span class="action-text">Taxes</span>
+            </div>
+            <div
+              class="action-button"
+              tabindex="0"
+              role="button"
+              aria-label="Transport payments"
+            >
+              <div class="action-icon">
+                <i class="bx bx-car"></i>
+              </div>
+              <span class="action-text">Transport</span>
+            </div>
+          </div>
+
+          <!-- Recent Sales -->
+          <div class="recent-sales">
+            <div class="section-header">
+              <h3 class="section-title">Recent Sales</h3>
+            </div>
+            <table class="sales-table">
+              <thead>
+                <tr>
+                  <th>Sender</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="seller">
+                      <div class="seller-avatar">
+                        <img
+                          src="https://randomuser.me/api/portraits/men/32.jpg"
+                          alt="Alex Johnson"
+                        />
+                      </div>
+                      <span class="seller-name">Alex Johnson</span>
+                    </div>
+                  </td>
+                  <td>Feb 18, 2025</td>
+                  <td>
+                    <div class="status success">
+                      <i class="bx bxs-circle"></i>
+                      Success
+                    </div>
+                  </td>
+                  <td class="amount">-$2,340.00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="seller">
+                      <div class="seller-avatar">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/44.jpg"
+                          alt="Sarah Williams"
+                        />
+                      </div>
+                      <span class="seller-name">Sarah Williams</span>
+                    </div>
+                  </td>
+                  <td>Feb 15, 2025</td>
+                  <td>
+                    <div class="status pending">
+                      <i class="bx bxs-circle"></i>
+                      Process
+                    </div>
+                  </td>
+                  <td class="amount">-$750.00</td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="seller">
+                      <div class="seller-avatar">
+                        <img
+                          src="https://randomuser.me/api/portraits/women/68.jpg"
+                          alt="Emma Rodriguez"
+                        />
+                      </div>
+                      <span class="seller-name">Emma Rodriguez</span>
+                    </div>
+                  </td>
+                  <td>Feb 12, 2025</td>
+                  <td>
+                    <div class="status failed">
+                      <i class="bx bxs-circle"></i>
+                      Failed
+                    </div>
+                  </td>
+                  <td class="amount">-$1,850.00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="right-panel">
+          <div class="statistics">
+            <div class="stats-header">
+              <h3 class="stats-title">
+                Statistics
+                <i class="bx bx-info-circle info-icon"></i>
+              </h3>
+              <div class="stats-period" tabindex="0" role="button">
+                <span>This week</span>
+                <i class="bx bx-chevron-down"></i>
+              </div>
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="donut-chart">
+              <svg class="donut-chart-svg" viewBox="0 0 100 100">
+                <circle class="donut-ring" cx="50" cy="50" r="40"></circle>
+                <circle
+                  class="donut-segment donut-segment-1"
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke-dasharray="60 40"
+                  stroke-dashoffset="0"
+                ></circle>
+                <circle
+                  class="donut-segment donut-segment-2"
+                  cx="50"
+                  cy="50"
+                  r="40"
+                  stroke-dasharray="40 60"
+                  stroke-dashoffset="60"
+                ></circle>
+              </svg>
+              <div class="chart-overlay">
+                <div class="chart-label">Total</div>
+                <div class="chart-value">$16,480.00</div>
+              </div>
+            </div>
+
+            <!-- Chart Legend -->
+            <div class="chart-legend">
+              <div class="legend-item" tabindex="0">
+                <div class="legend-color light"></div>
+                <span>Payment at store</span>
+              </div>
+              <div class="legend-item" tabindex="0">
+                <div class="legend-color dark"></div>
+                <span>Money transaction</span>
+              </div>
+            </div>
+
+            <!-- Recent Transactions -->
+            <div class="transactions">
+              <div class="transaction" tabindex="0" role="button">
+                <div class="transaction-left">
+                  <div class="transaction-icon">
+                    <i class="bx bxl-amazon"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <h4>Amazon</h4>
+                    <p>Payment at the store</p>
+                    <p>28 minutes ago</p>
+                  </div>
+                </div>
+                <div class="transaction-amount">-$380.00</div>
+              </div>
+
+              <div class="transaction" tabindex="0" role="button">
+                <div class="transaction-left">
+                  <div class="transaction-icon">
+                    <i class="bx bxl-microsoft"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <h4>Microsoft</h4>
+                    <p>Payment at the store</p>
+                    <p>3 hours ago</p>
+                  </div>
+                </div>
+                <div class="transaction-amount">-$180.00</div>
+              </div>
+
+              <div class="transaction" tabindex="0" role="button">
+                <div class="transaction-left">
+                  <div class="transaction-icon dark">
+                    <i class="bx bxl-paypal"></i>
+                  </div>
+                  <div class="transaction-details">
+                    <h4>PayPal</h4>
+                    <p>Money transaction</p>
+                    <p>1 day ago</p>
+                  </div>
+                </div>
+                <div class="transaction-amount">-$95.00</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
