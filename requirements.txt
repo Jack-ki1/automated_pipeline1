@@ -1,2 +1,5 @@
 streamlit
 beautifulsoup4
+plotly
+reportlab
+tempfile
