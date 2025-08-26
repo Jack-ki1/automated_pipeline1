@@ -1,4 +1,5 @@
 streamlit
 beautifulsoup4
-plotly.express
-reportlab
+pandas
+requests
+plotly
